@@ -20,8 +20,6 @@ public class MilageCalculator {
 
 
     System.out.printf("You've travelled a total of %d miles and used a total of %d gallons. Your average gas mileage was %.2f mpg.\n", totalMiles, totalGallons, (float)totalMiles/(float)totalGallons);
-    
-
-
+  
   }
 }
