@@ -2,27 +2,36 @@ import java.util.Scanner;
 
 public class Simpletron {
   int MEMORY_SIZE = 100;
-
+  
   int [] memory = new int [MEMORY_SIZE];
   int accumulator = 0;
-  Scanner scanner = new Scanner();
-
+  Scanner scanner = new Scanner(System.in);
+  
   public void start() {
-    this.showWelcomeMessage();
+    showWelcomeMessage();
+    this.loadFromUser();
   }
-
+  
   private void loadFromUser() {
-    String input;
-    boolean stop = false;
     String EOF = "-99999";
-    // do {
-      input = scanner.nextLine(System.in);
+    String input;
+    int inputAsInteger;
+    int counter = 0;
 
-    // } (while input != EOF)
+    do {
+      System.out.printf(": ");
+      input = scanner.next();
+
+      inputAsInteger = Integer.parseInt(input);
+      if(!input.equals(EOF) && inputAsInteger >= -99999 && inputAsInteger <= 9999) { 
+        this.memory[counter] = inputAsInteger;
+        counter++;
+      }
+    } while (!input.equals(EOF) && counter < MEMORY_SIZE);
   }
 
-  private static void showWelcomeMessage() {
-    String [] welcomeLines = {
+  private void showWelcomeMessage() {
+    final String [] welcomeLines = {
       "Welcome to Simpletron!\t\t\t",
       "Please enter your program one instruction\t",
       "(or data word) at a time. I will display\t", 
